@@ -19,6 +19,11 @@ export default {
       type: String,
       default: '',
       required: false
+    },
+    id: {
+      type: Number,
+      default: 0,
+      required: false
     }
   },
   setup(props) {
@@ -38,6 +43,10 @@ export default {
 
     watchEffect(() => {
       console.log('msg is: ', props.msg)
+    })
+
+    watchEffect(() => {
+      console.log('id: ', props.id)
     })
 
     function setVal () {

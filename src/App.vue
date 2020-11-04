@@ -1,7 +1,7 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
   <HelloWorld msg="Welcome to Your Vue.js App"/>
-  <employe v-model="idemploye"  :msg="msg"></employe>
+  <employe v-model="idemploye"  :msg="msg" :id="id"></employe>
 </template>
 
 <script>
@@ -16,11 +16,13 @@ export default {
   },
   data: () => ({
     idemploye: 666,
-    msg: 'toto'
+    msg: 'toto',
+    id: 6
   }),
   mounted () {
     setTimeout(() => {
       this.msg = 'tutu'
+      this.id = 10958
     }, 10000)
   }
 }
