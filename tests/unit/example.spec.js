@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils'
+import { shallowMount, mount } from '@vue/test-utils'
 import HelloWorld from '@/components/HelloWorld.vue'
 
 describe('HelloWorld.vue', () => {
@@ -8,5 +8,10 @@ describe('HelloWorld.vue', () => {
       props: { msg }
     })
     expect(wrapper.text()).toMatch(msg)
+  })
+
+  test('renders blank when no props is passed', () => {
+    const wrapper = shallowMount(HelloWorld)
+    expect(wrapper.html()).toMatch('')
   })
 })
