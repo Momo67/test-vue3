@@ -1,24 +1,33 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
-  <employe v-model="idemploye"  :msg="msg" :id="id"></employe>
+  <v-app>
+    <v-main>
+      <employe v-if="isDisplayed" v-model="idemploye"  :msg="msg" :id="id"></employe><br>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+//import HelloWorld from './components/HelloWorld.vue'
 import Employe from './components/Employe.vue'
 
 export default {
   name: 'App',
+
   components: {
-    HelloWorld,
+    //HelloWorld,
     Employe
   },
   data: () => ({
-    idemploye: 666,
+    idemploye: 10958,
     msg: 'toto',
-    id: 6
+    id: 6,
+    isDisplayed: true
   }),
+  methods: {
+    showComponent () {
+      this.isDisplayed = !this.isDisplayed
+    }
+  },
   mounted () {
     setTimeout(() => {
       this.msg = 'tutu'
@@ -36,5 +45,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+* {
+   text-transform: none !important; 
 }
 </style>
