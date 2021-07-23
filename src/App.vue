@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import { ref, onMounted } from 'vue'
 //import HelloWorld from './components/HelloWorld.vue'
 import Employe from './components/Employe.vue'
 
@@ -17,6 +18,7 @@ export default {
     //HelloWorld,
     Employe
   },
+  /*
   data: () => ({
     idemploye: 10958,
     msg: 'toto',
@@ -33,6 +35,32 @@ export default {
       this.msg = 'tutu'
       this.id = 10958
     }, 10000)
+  },
+  */
+  setup() {
+    const idemploye = ref(10958)
+    const msg = ref('toto')
+    const id = ref(6)
+    const isDisplayed = ref(true)
+
+    const showComponent = () => {
+      this.isDisplayed = !this.isDisplayed
+    }
+
+    onMounted(() => {
+      setTimeout(() => {
+        msg.value = 'tutu'
+        id.value = 10958
+      }, 10000)
+    })
+
+    return {
+      idemploye,
+      msg,
+      id,
+      isDisplayed,
+      showComponent
+    }
   }
 }
 </script>
