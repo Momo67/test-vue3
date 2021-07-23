@@ -18,25 +18,7 @@ export default {
     //HelloWorld,
     Employe
   },
-  /*
-  data: () => ({
-    idemploye: 10958,
-    msg: 'toto',
-    id: 6,
-    isDisplayed: true
-  }),
-  methods: {
-    showComponent () {
-      this.isDisplayed = !this.isDisplayed
-    }
-  },
-  mounted () {
-    setTimeout(() => {
-      this.msg = 'tutu'
-      this.id = 10958
-    }, 10000)
-  },
-  */
+
   setup() {
     const idemploye = ref(10958)
     const msg = ref('toto')
