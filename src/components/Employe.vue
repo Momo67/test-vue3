@@ -5,12 +5,10 @@
   <div>title:&nbsp;{{ title }}</div>
   <div>{{ `x: ${pos.x}, y: ${pos.y}` }}</div>
   <p>{{ my_id }}</p>
-  <div class="jobs">
+  <div class="jobs" @click="onJobClick">
     <p v-for="job in jobs" :key="job">{{job.id}} - {{job.title}} - {{job.details}}</p>
   </div>
-  <!--
   <p><button @click="changeMyId">Increase my_id</button></p>
-  -->
   <p>{{ toto }}</p>
   <a :href="`https://golux.lausanne.ch/goeland/employe/employe_data.php?IdEmploye=${my_obj.idemploye}`" target="__blank">Infos employé</a>
   <p><v-btn color="success" @click="incToto">Incrémente toto</v-btn></p>
@@ -30,6 +28,7 @@ function useMousePosition() {
 }
 
 export default {
+  name: 'Employe',
   props: {
     modelValue: {
       type: [String, Number],
@@ -47,7 +46,11 @@ export default {
       required: false
     }
   },
-  setup(props) {
+  emits: {
+    click: null,
+    jobclick: null
+  },
+  setup(props, { emit }) {
     const pos = useMousePosition()
     const title = ref('Merci patron')
     const idemploye = ref(0)
@@ -102,6 +105,11 @@ export default {
       my_obj.idemploye = props.modelValue
     })
 
+    const onJobClick = () => {
+      console.log('On est dans onJobClick de Employe')
+      emit('jobclick', props.id)
+    }
+
     return {
       pos,
       title,
@@ -112,7 +120,8 @@ export default {
       changeMyId,
       jobs,
       incToto, 
-      toto
+      toto,
+      onJobClick
     }
   }
 }
