@@ -1,0 +1,58 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta charset="utf-8">
+		<title>Employe demo</title>
+		<!--
+ 		<script src="https://unpkg.com/vue"></script>
+		<script src="https://unpkg.com/vuetify"></script>
+		-->
+
+		<link rel='stylesheet' type='text/css' title='StyleDeBase' href='style/mainstyle.css'>
+  	</head>
+   <body>
+		<div id="app">
+			<employe @jobclick="onJobClick(arg)"></employe>
+		</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/vue@3.0.2"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vuetify@3.0.0-alpha.0"></script>
+		<script src="../test_vue3/Employe.umd.js"></script>
+
+		<script>
+			const onJobClick = (arg) => {
+				console.log('onJobClick');
+				console.log('arg: ', arg);
+			}
+
+/*
+			const vuetify = new Vuetify({
+				iconfont: 'mdiSvg',
+	  			lang: {
+	    			t: (key, ...params) => i18n.t(key, params)
+	  			}
+			})
+
+			new Vue({
+				vuetify,
+				components: {
+			   	employe: Employe
+	  			}
+			}).$mount('#app')
+
+			new Vue({
+      		el: '#app',
+      		//vuetify: new Vuetify()
+    		})
+
+*/
+			const app = Vue.createApp({})
+			app.component('employe', {
+				components: { Employe },
+				template: '<div>666</div>'
+			})
+			app.mount('#app')
+		</script>
+
+   </body>
+</html>
+
