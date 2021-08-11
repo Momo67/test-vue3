@@ -1,58 +1,52 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
    <head>
       <meta charset="utf-8">
-		<title>Employe demo</title>
-		<!--
- 		<script src="https://unpkg.com/vue"></script>
-		<script src="https://unpkg.com/vuetify"></script>
-		-->
+      <title>Employe demo</title>
 
-		<link rel='stylesheet' type='text/css' title='StyleDeBase' href='style/mainstyle.css'>
-  	</head>
+      <link rel='stylesheet' type='text/css' title='StyleDeBase' href='style/mainstyle.css'>
+   </head>
    <body>
-		<div id="app">
-			<employe @jobclick="onJobClick(arg)"></employe>
-		</div>
+      <div id="app">
+         <employe msg="toto" id="666" @jobclick="onJobClick"></employe>
+      </div>
 
-		<script src="https://cdn.jsdelivr.net/npm/vue@3.0.2"></script>
-		<script src="https://cdn.jsdelivr.net/npm/vuetify@3.0.0-alpha.0"></script>
-		<script src="../test_vue3/Employe.umd.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vue@3.0.2"></script>
+		<!--
+      <script src="https://cdn.jsdelivr.net/npm/vuetify@3.0.0-alpha.0"></script>
+		-->
+      <script src="https://cdn.jsdelivr.net/npm/vuetify@3.0.0-alpha.0/dist/vuetify.js"></script>
+      <script src="../test_vue3/Employe.umd.js"></script>
 
-		<script>
-			const onJobClick = (arg) => {
-				console.log('onJobClick');
-				console.log('arg: ', arg);
-			}
+      <script>
+			const config = {
+				setup () {
+               const onJobClick = (arg) => {
+                  console.log('onJobClick');
+                  console.log('arg: ', arg);
+               }
 
-/*
-			const vuetify = new Vuetify({
-				iconfont: 'mdiSvg',
-	  			lang: {
-	    			t: (key, ...params) => i18n.t(key, params)
-	  			}
-			})
+               return {
+                  onJobClick
+               }
+            }
+         }
 
-			new Vue({
-				vuetify,
-				components: {
-			   	employe: Employe
-	  			}
-			}).$mount('#app')
+			const vuetify = Vue.createVuetify({
+            iconfont: 'mdiSvg',
+				/*
+            lang: {
+               t: (key, ...params) => i18n.t(key, params)
+            }
+				*/
+         })
 
-			new Vue({
-      		el: '#app',
-      		//vuetify: new Vuetify()
-    		})
-
-*/
-			const app = Vue.createApp({})
-			app.component('employe', {
-				components: { Employe },
-				template: '<div>666</div>'
-			})
-			app.mount('#app')
-		</script>
+         const app = Vue.createApp(config)
+			app.use(vuetify)
+         app.component('employe', Employe)
+         app.mount('#app')
+      </script>
 
    </body>
 </html>
+
 
