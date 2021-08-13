@@ -7,17 +7,24 @@
    </head>
    <body>
       <div id="app">
+      <!--
+         <my-vue-employe msg="toto" id="666" @jobclick="onJobClick"></my-vue-employe>
+      -->         
          <employe msg="toto" id="666" @jobclick="onJobClick"></employe>
       </div>
 
-      <script src="https://cdn.jsdelivr.net/npm/vue@3.0.2"></script>
-		<!--
-      <script src="https://cdn.jsdelivr.net/npm/vuetify@3.0.0-alpha.0"></script>
-		-->
-      <script src="https://cdn.jsdelivr.net/npm/vuetify@3.0.0-alpha.0/dist/vuetify.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vue@3.2"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vuetify@3.0.0-alpha.10"></script>
       <script src="../test_vue3/Employe.umd.js"></script>
 
-      <script>
+      <script type="module">
+         const { defineCustomElement } = Vue
+         const { createVuetify } = Vuetify
+
+         const EmployeElement = defineCustomElement(Employe)
+
+         customElements.define('my-vue-employe', EmployeElement)
+
 			const config = {
 				setup () {
                const onJobClick = (arg) => {
@@ -31,13 +38,12 @@
             }
          }
 
-			const vuetify = Vue.createVuetify({
+
+			const vuetify = createVuetify({
             iconfont: 'mdiSvg',
-				/*
-            lang: {
-               t: (key, ...params) => i18n.t(key, params)
-            }
-				*/
+            //lang: {
+            //   t: (key, ...params) => i18n.t(key, params)
+            //}
          })
 
          const app = Vue.createApp(config)
