@@ -1,16 +1,12 @@
 <template>
   <v-app>
     <v-main>
-      <employe v-if="isDisplayed" v-model="idemploye"  :msg="msg" :id="id"></employe><br>
+      <employe v-if="isDisplayed" v-model="idemploye"  :msg="msg" :id="id" @jobclick="onJobClick"></employe><br>
     </v-main>
   </v-app>
 </template>
 
 <script>
-function onjobclick(arg) {
-  console.log('onjobclick')
-  console.log(arg)
-}
 import { ref, onMounted } from 'vue'
 //import HelloWorld from './components/HelloWorld.vue'
 import Employe from './components/Employe.vue'
@@ -39,15 +35,12 @@ export default {
         msg.value = 'tutu'
         id.value = 10958
       }, 10000)
-      emit('jobclick', 666)
     })
 
-/*
     const onJobClick = () => {
       console.log('On est dans onJobClick')
       emit('jobclick', 666)
     }
-*/    
 
     return {
       idemploye,
@@ -55,7 +48,7 @@ export default {
       id,
       isDisplayed,
       showComponent,
-      onjobclick
+      onJobClick
     }
   }
 }
