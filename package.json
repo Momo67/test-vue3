@@ -6,6 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --mode development",
     "build-lib": "vue-cli-service build --target lib --mode development --name Employe ./src/components/Employe.vue",
+    "build-ce": "vue-cli-service build --target lib --mode development --name Test ./src/components/test.js",
     "test:unit": "vue-cli-service test:unit --watchAll --coverage",
     "lint": "vue-cli-service lint"
   },

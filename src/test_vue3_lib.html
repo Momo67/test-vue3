@@ -5,51 +5,28 @@
 
       <link rel='stylesheet' type='text/css' title='StyleDeBase' href='style/mainstyle.css'>
    </head>
-   <body>
+   <body onload="body_onload()">
       <div id="app">
       <!--
          <my-vue-employe msg="toto" id="666" @jobclick="onJobClick"></my-vue-employe>
-      -->         
          <employe msg="toto" id="666" @jobclick="onJobClick"></employe>
+      -->         
+         <my-test id="test" msg='Hello Momo!'></my-test>
       </div>
 
       <script src="https://cdn.jsdelivr.net/npm/vue@3.2"></script>
       <script src="https://cdn.jsdelivr.net/npm/vuetify@3.0.0-alpha.10"></script>
-      <script src="../test_vue3/Employe.umd.js"></script>
+      <script src="../test_vue3/Test.umd.js"></script>
 
-      <script type="module">
-         const { defineCustomElement } = Vue
-         const { createVuetify } = Vuetify
-
-         const EmployeElement = defineCustomElement(Employe)
-
-         customElements.define('my-vue-employe', EmployeElement)
-
-			const config = {
-				setup () {
-               const onJobClick = (arg) => {
-                  console.log('onJobClick');
-                  console.log('arg: ', arg);
-               }
-
-               return {
-                  onJobClick
-               }
-            }
+      <script>
+         function body_onload() {
+            const div = document.querySelector('#test')
+            console.log('div: ', div)
+            div.addEventListener('jobclick', e => {
+               console.log(e)
+               alert(`${e.detail[0].detail.nom}`)
+            })
          }
-
-
-			const vuetify = createVuetify({
-            iconfont: 'mdiSvg',
-            //lang: {
-            //   t: (key, ...params) => i18n.t(key, params)
-            //}
-         })
-
-         const app = Vue.createApp(config)
-			app.use(vuetify)
-         app.component('employe', Employe)
-         app.mount('#app')
       </script>
 
    </body>
