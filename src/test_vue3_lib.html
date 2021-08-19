@@ -11,9 +11,13 @@
          <my-vue-employe msg="toto" id="666" @jobclick="onJobClick"></my-vue-employe>
          <employe msg="toto" id="666" @jobclick="onJobClick"></employe>
       -->         
-         <my-test id="test" msg='Hello Momo!'></my-test>
+         <my-test id="test" msg='Hello Momo!'>
+            <div slot="content">Toto</div>
+         </my-test>
       </div>
 
+      <!--
+      -->
       <script src="https://cdn.jsdelivr.net/npm/vue@3.2"></script>
       <script src="https://cdn.jsdelivr.net/npm/vuetify@3.0.0-alpha.10"></script>
       <script src="../test_vue3/Test.umd.js"></script>
@@ -24,9 +28,21 @@
             console.log('div: ', div)
             div.addEventListener('jobclick', e => {
                console.log(e)
-               alert(`${e.detail[0].detail.nom}`)
+               alert(`${e.detail[0].nom}`)
             })
          }
+      </script>
+
+      <script type="module">
+         const { createApp } = Vue
+         const { createVuetify } = Vuetify
+         console.log('Test: ', Test)
+
+         const app = createApp(Test)
+         const vuetitfy = createVuetify()
+
+         app.use(vuetitfy)
+         app.mount('#app')
       </script>
 
    </body>

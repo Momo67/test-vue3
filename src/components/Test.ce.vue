@@ -1,10 +1,19 @@
 <template>
   <h1 @click="onClick">{{ msg }}</h1>
+  <slot name="content"></slot>
+  <div>
+    <v-btn color="success" @click="dispMsg">Cliquer ici</v-btn>
+  </div>
 </template>
 
 <script>
 export default {
   props: {
+    id: {
+      type: String,
+      default: null,
+      required: false
+    },
     msg: {
       type: String,
       default: '',
@@ -21,11 +30,16 @@ export default {
         nom: 'Pittet',
         prenom: 'Maurice'
       }
-      emit('jobclick', { detail: myobj})
+      emit('jobclick', myobj)
+    }
+
+    const dispMsg = () => {
+      alert('Vous avez cliqué sur le bouton vuetify!')
     }
 
     return {
-      onClick
+      onClick,
+      dispMsg
     }
   }
 }
