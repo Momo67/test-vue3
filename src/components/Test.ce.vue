@@ -6,6 +6,7 @@
   </div>
 </template>
 
+<!--
 <script>
 export default {
   props: {
@@ -23,6 +24,7 @@ export default {
   emits: {
     jobclick: null
   },
+
   setup (props, { emit }) {
     const onClick = () => {
       console.log('Appel de onClick')
@@ -42,6 +44,40 @@ export default {
       dispMsg
     }
   }
+}
+</script>
+-->
+<script setup>
+import { defineProps, defineEmits } from 'vue'
+
+defineProps({
+  id: {
+    type: String,
+    default: null,
+    required: false
+  },
+  msg: {
+    type: String,
+    default: '',
+    required: false
+  }
+})
+
+const emit = defineEmits({
+    jobclick: null
+})
+
+const onClick = () => {
+  console.log('Appel de onClick')
+  let myobj = {
+    nom: 'Pittet',
+    prenom: 'Maurice'
+  }
+  emit('jobclick', myobj)
+}
+
+const dispMsg = () => {
+  alert('Vous avez cliqué sur le bouton vuetify!')
 }
 </script>
 
